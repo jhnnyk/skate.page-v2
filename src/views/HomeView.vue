@@ -2,6 +2,6 @@
 
 <template>
   <main>
-    <p>Welcome to Skate.page</p>
+    <p>Welcome to Homepage</p>
   </main>
 </template>
