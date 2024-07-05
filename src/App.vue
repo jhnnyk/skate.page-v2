@@ -1,11 +1,13 @@
 <script setup></script>
 
 <template>
-  <header>
+  <header class="bg-gray-300 shadow-sm p-4">
     <nav>
-      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/" class="text-5xl">Skate.page</RouterLink>
     </nav>
   </header>
 
-  <RouterView />
+  <div class="container mx-auto">
+    <RouterView />
+  </div>
 </template>
