@@ -7,7 +7,7 @@ const { user } = getUser()
 
 <template>
   <header class="bg-gray-300 shadow-sm p-4">
-    <RouterLink to="/" class="text-5xl">Skate.page</RouterLink>
+    <RouterLink to="/" class="text-3xl">Skate.page</RouterLink>
     <nav>Trick Index</nav>
   </header>
   <AdminTools v-if="user" />
