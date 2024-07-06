@@ -9,7 +9,10 @@ const { documents: tricks } = getCollection('tricks')
   <div v-if="tricks">
     <ul v-for="trick in tricks" :key="trick.id">
       <li>
-        <RouterLink :to="{ name: 'TrickDetails', params: { id: trick.id } }">
+        <RouterLink
+          :to="{ name: 'TrickDetails', params: { id: trick.id } }"
+          class="text-blue-900 hover:underline"
+        >
           {{ trick.title }}
         </RouterLink>
       </li>
