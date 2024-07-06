@@ -1,4 +1,6 @@
 <script setup>
+const props = defineProps({ action: String })
+
 const trickName = defineModel('trickName')
 const altNames = defineModel('altNames')
 const inventor = defineModel('inventor')
@@ -9,10 +11,17 @@ const relatedTricks = defineModel('relatedTricks')
 const sources = defineModel('sources')
 const tags = defineModel('tags')
 const motionTags = defineModel('motionTags')
+
+const handleSubmit = () => {
+  if (props.action == 'Add') {
+    console.log('add: ')
+  }
+  console.log(trickName.value)
+}
 </script>
 
 <template>
-  <form class="flex flex-col max-w-96 mx-auto pb-14">
+  <form @submit.prevent="handleSubmit" class="flex flex-col max-w-96 mx-auto pb-14">
     <label for="trickName" class="mt-2 text-sm font-semibold">Trick Name:</label>
     <input
       type="text"
@@ -98,10 +107,11 @@ const motionTags = defineModel('motionTags')
       v-model="motionTags"
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     />
+
     <button
-      class="text-white bg-blue-900 mx-auto mt-4 w-32 px-4 py-2 rounded-lg border-2 border-blue-900"
+      class="text-white bg-blue-900 mx-auto mt-4 shrink px-4 py-2 rounded-lg border-2 border-blue-900"
     >
-      Add trick
+      {{ props.action }} trick
     </button>
   </form>
 </template>

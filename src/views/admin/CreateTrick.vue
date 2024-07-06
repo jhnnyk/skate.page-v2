@@ -4,5 +4,5 @@ import TrickForm from '@/components/TrickForm.vue'
 
 <template>
   <h1 class="text-3xl text-center m-4">Add a new trick</h1>
-  <TrickForm />
+  <TrickForm action="Add" />
 </template>
