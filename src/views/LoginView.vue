@@ -20,7 +20,7 @@ const handleSubmit = async () => {
   <form @submit.prevent="handleSubmit">
     <h1 class="text-4xl p-4">Login</h1>
     <input
-      class="rounded-full border-solid border-2 border-blue-900 px-4 py-2 mr-2"
+      class="rounded-lg border-solid border-2 border-blue-900 px-4 py-2 mr-2"
       type="email"
       name="email"
       autocomplete="email"
@@ -28,14 +28,19 @@ const handleSubmit = async () => {
       v-model="email"
     />
     <input
-      class="rounded-full border-solid border-2 border-blue-900 px-4 py-2 mr-2"
+      class="rounded-lg border-solid border-2 border-blue-900 px-4 py-2 mr-2"
       type="password"
       name="current-password"
       placeholder="Password"
       v-model="password"
     />
     <div v-if="error" class="error">{{ error }}</div>
-    <button v-if="!isPending" class="text-white bg-blue-900 px-4 py-2 rounded-full">Login</button>
+    <button
+      v-if="!isPending"
+      class="text-white bg-blue-900 px-4 py-2 rounded-lg border-2 border-blue-900"
+    >
+      Login
+    </button>
     <button v-if="isPending" disabled class="text-white bg-gray-500 px-4 py-2 rounded-full">
       Loading...
     </button>
