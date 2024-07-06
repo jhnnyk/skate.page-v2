@@ -39,6 +39,7 @@ const handleSubmit = async () => {
 <template>
   <h1 class="text-3xl text-center m-4">Add a new trick</h1>
 
+  <!-- trick name -->
   <form @submit.prevent="handleSubmit" class="flex flex-col max-w-96 mx-auto pb-14">
     <label for="trickName" class="mt-2 text-sm font-semibold">Trick Name:</label>
     <input
@@ -49,6 +50,7 @@ const handleSubmit = async () => {
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     />
 
+    <!-- alternate names for trick -->
     <label for="altNames" class="mt-2 text-sm font-semibold">Alternate Trick Names:</label>
     <input
       type="text"
@@ -58,6 +60,7 @@ const handleSubmit = async () => {
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     />
 
+    <!-- trick inventor -->
     <label for="inventor" class="mt-2 text-sm font-semibold">Inventor:</label>
     <input
       type="text"
@@ -67,6 +70,7 @@ const handleSubmit = async () => {
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     />
 
+    <!-- trick description -->
     <label for="description" class="mt-2 text-sm font-semibold">Description:</label>
     <textarea
       id="description"
@@ -75,6 +79,7 @@ const handleSubmit = async () => {
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     ></textarea>
 
+    <!-- trick history -->
     <label for="history" class="mt-2 text-sm font-semibold">History:</label>
     <textarea
       id="history"
@@ -83,6 +88,7 @@ const handleSubmit = async () => {
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     ></textarea>
 
+    <!-- videos -->
     <label for="videos" class="mt-2 text-sm font-semibold">Videos:</label>
     <textarea
       id="videos"
@@ -91,6 +97,7 @@ const handleSubmit = async () => {
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     ></textarea>
 
+    <!-- related tricks -->
     <label for="relatedTricks" class="mt-2 text-sm font-semibold">Related Tricks:</label>
     <input
       type="text"
@@ -100,6 +107,7 @@ const handleSubmit = async () => {
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     />
 
+    <!-- trick sources -->
     <label for="sources" class="mt-2 text-sm font-semibold">Sources:</label>
     <textarea
       id="sources"
@@ -108,6 +116,7 @@ const handleSubmit = async () => {
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     ></textarea>
 
+    <!-- tags -->
     <label for="newTag" class="mt-2 text-sm font-semibold">Tags: {{ tags }}</label>
     <input
       type="text"
@@ -118,6 +127,7 @@ const handleSubmit = async () => {
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     />
 
+    <!-- motion tags -->
     <label for="motionTags" class="mt-2 text-sm font-semibold">Motion Tags:</label>
     <input
       type="text"
@@ -130,12 +140,15 @@ const handleSubmit = async () => {
     <!-- error message -->
     <div v-if="error" class="text-red-600 m-4">{{ error }}</div>
 
+    <!-- submit button -->
     <button
       v-if="!isPending"
       class="text-white bg-blue-900 mx-auto mt-4 shrink px-4 py-2 rounded-lg border-2 border-blue-900"
     >
       Add trick
     </button>
+
+    <!-- loading button -->
     <button
       v-if="isPending"
       class="text-white bg-gray-500 mt-4 mx-auto shrink px-4 py-2 rounded-lg border-2 border-gray-500"
