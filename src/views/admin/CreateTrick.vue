@@ -128,9 +128,17 @@ const handleSubmit = async () => {
     />
 
     <button
+      v-if="!isPending"
       class="text-white bg-blue-900 mx-auto mt-4 shrink px-4 py-2 rounded-lg border-2 border-blue-900"
     >
       Add trick
+    </button>
+    <button
+      v-if="isPending"
+      class="text-white bg-gray-500 mt-4 mx-auto shrink px-4 py-2 rounded-lg border-2 border-gray-500"
+      disabled
+    >
+      Loading...
     </button>
   </form>
 </template>
