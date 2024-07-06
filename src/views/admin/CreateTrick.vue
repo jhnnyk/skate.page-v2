@@ -127,6 +127,9 @@ const handleSubmit = async () => {
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     />
 
+    <!-- error message -->
+    <div v-if="error" class="text-red-600 m-4">{{ error }}</div>
+
     <button
       v-if="!isPending"
       class="text-white bg-blue-900 mx-auto mt-4 shrink px-4 py-2 rounded-lg border-2 border-blue-900"
