@@ -3,6 +3,7 @@ import HomeView from '@/views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue'
 import CreateTrick from '@/views/admin/CreateTrick.vue'
 import TrickDetails from '@/views/TrickDetails.vue'
+import EditTrick from '@/views/admin/EditTrick.vue'
 import { auth } from '@/firebase/config'
 
 // route guards
@@ -39,6 +40,12 @@ const router = createRouter({
       path: '/tricks/:id',
       name: 'TrickDetails',
       component: TrickDetails,
+      props: true
+    },
+    {
+      path: '/tricks/:id/edit',
+      name: 'EditTrick',
+      component: EditTrick,
       props: true
     }
   ]
