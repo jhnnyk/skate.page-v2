@@ -1,17 +1,32 @@
 <script setup>
-const trickName = defineModel('trickName')
-const altNames = defineModel('altNames')
-const inventor = defineModel('inventor')
-const description = defineModel('description')
-const history = defineModel('history')
-const videos = defineModel('videos')
-const relatedTricks = defineModel('relatedTricks')
-const sources = defineModel('sources')
-const tags = defineModel('tags')
-const motionTags = defineModel('motionTags')
+import useCollection from '@/composables/useCollection'
 
-const handleSubmit = () => {
-  console.log(trickName.value)
+const { error, addItemtoDB, isPending } = useCollection('tricks')
+
+const trickName = defineModel('trickName', { default: null })
+const altNames = defineModel('altNames', { default: null })
+const inventor = defineModel('inventor', { default: null })
+const description = defineModel('description', { default: null })
+const history = defineModel('history', { default: null })
+const videos = defineModel('videos', { default: null })
+const relatedTricks = defineModel('relatedTricks', { default: null })
+const sources = defineModel('sources', { default: null })
+const tags = defineModel('tags', { default: null })
+const motionTags = defineModel('motionTags', { default: null })
+
+const handleSubmit = async () => {
+  const res = await addItemtoDB({
+    trickName: trickName.value,
+    altNames: altNames.value,
+    inventor: inventor.value,
+    description: description.value,
+    history: history.value,
+    videos: videos.value,
+    relatedTricks: relatedTricks.value,
+    sources: sources.value,
+    tags: tags.value,
+    motionTags: motionTags.value
+  })
 }
 </script>
 
