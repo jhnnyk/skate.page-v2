@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue'
 import CreateTrick from '@/views/admin/CreateTrick.vue'
+import TrickDetails from '@/views/TrickDetails.vue'
 import { auth } from '@/firebase/config'
 
 // route guards
@@ -33,6 +34,12 @@ const router = createRouter({
       name: 'CreateTrick',
       component: CreateTrick,
       beforeEnter: requireAuth
+    },
+    {
+      path: '/tricks/:id',
+      name: 'TrickDetails',
+      component: TrickDetails,
+      props: true
     }
   ]
 })

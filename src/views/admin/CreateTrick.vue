@@ -3,7 +3,7 @@ import useCollection from '@/composables/useCollection'
 
 const { error, addItemtoDB, isPending } = useCollection('tricks')
 
-const trickName = defineModel('trickName', { default: null })
+const title = defineModel('title', { default: null })
 const altNames = defineModel('altNames', { default: null })
 const inventor = defineModel('inventor', { default: null })
 const description = defineModel('description', { default: null })
@@ -22,7 +22,7 @@ const handleAddTag = () => {
 
 const handleSubmit = async () => {
   const res = await addItemtoDB({
-    trickName: trickName.value,
+    title: title.value,
     altNames: altNames.value,
     inventor: inventor.value,
     description: description.value,
@@ -39,14 +39,14 @@ const handleSubmit = async () => {
 <template>
   <h1 class="text-3xl text-center m-4">Add a new trick</h1>
 
-  <!-- trick name -->
   <form @submit.prevent="handleSubmit" class="flex flex-col max-w-96 mx-auto pb-14">
-    <label for="trickName" class="mt-2 text-sm font-semibold">Trick Name:</label>
+    <!-- trick name -->
+    <label for="title" class="mt-2 text-sm font-semibold">Trick Name:</label>
     <input
       type="text"
-      id="trickName"
+      id="title"
       placeholder="Trick Name"
-      v-model="trickName"
+      v-model="title"
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     />
 
