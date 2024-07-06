@@ -6,9 +6,13 @@ const { user } = getUser()
 </script>
 
 <template>
-  <header class="bg-gray-300 shadow-sm p-4">
+  <header class="flex justify-between items-center bg-gray-300 p-4">
     <RouterLink to="/" class="text-3xl">Skate.page</RouterLink>
-    <nav>Trick Index</nav>
+    <nav>
+      <RouterLink :to="{ name: 'TrickIndex' }" class="text-blue-900 hover:underline">
+        Trick Index
+      </RouterLink>
+    </nav>
   </header>
   <AdminTools v-if="user" />
 </template>

@@ -4,6 +4,7 @@ import LoginView from '@/views/LoginView.vue'
 import CreateTrick from '@/views/admin/CreateTrick.vue'
 import TrickDetails from '@/views/TrickDetails.vue'
 import EditTrick from '@/views/admin/EditTrick.vue'
+import TrickIndex from '@/views/TrickIndex.vue'
 import { auth } from '@/firebase/config'
 
 // route guards
@@ -47,6 +48,11 @@ const router = createRouter({
       name: 'EditTrick',
       component: EditTrick,
       props: true
+    },
+    {
+      path: '/tricks',
+      name: 'TrickIndex',
+      component: TrickIndex
     }
   ]
 })
