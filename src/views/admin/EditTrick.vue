@@ -1,17 +1,18 @@
 <script setup>
 import getDocument from '@/composables/getDocument'
 import useDocument from '@/composables/useDocument'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({ id: String })
+const router = useRouter()
 
 const { error, document: trick } = getDocument('tricks', props.id)
 const { error: editError, isPending, updateDocument } = useDocument('tricks', props.id)
 
 const handleSubmit = async () => {
-  isPending.value = true
   await updateDocument(trick.value)
-  if (!editError) {
-    isPending.value = false
+  if (!editError.value) {
+    router.push({ name: 'TrickDetails', params: { id: props.id } })
   }
 }
 </script>
