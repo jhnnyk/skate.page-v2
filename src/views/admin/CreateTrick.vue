@@ -1,5 +1,8 @@
-<script setup></script>
+<script setup>
+import TrickForm from '@/components/TrickForm.vue'
+</script>
 
 <template>
-  <p>New Trick Form here</p>
+  <h1 class="text-3xl text-center m-4">Add a new trick</h1>
+  <TrickForm />
 </template>
