@@ -11,8 +11,14 @@ const history = defineModel('history', { default: null })
 const videos = defineModel('videos', { default: null })
 const relatedTricks = defineModel('relatedTricks', { default: null })
 const sources = defineModel('sources', { default: null })
-const tags = defineModel('tags', { default: null })
+const tags = defineModel('tags', { default: [] })
+const newTag = defineModel('newTag')
 const motionTags = defineModel('motionTags', { default: null })
+
+const handleAddTag = () => {
+  tags.value.push(newTag.value)
+  newTag.value = ''
+}
 
 const handleSubmit = async () => {
   const res = await addItemtoDB({
@@ -102,12 +108,13 @@ const handleSubmit = async () => {
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     ></textarea>
 
-    <label for="tags" class="mt-2 text-sm font-semibold">Tags:</label>
+    <label for="newTag" class="mt-2 text-sm font-semibold">Tags: {{ tags }}</label>
     <input
       type="text"
-      id="tags"
-      placeholder="Tags"
-      v-model="tags"
+      id="newTag"
+      placeholder="Add Tag"
+      v-model="newTag"
+      @keypress.enter.prevent="handleAddTag"
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     />
 
