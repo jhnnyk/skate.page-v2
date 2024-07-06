@@ -1,7 +1,9 @@
 <script setup>
 import useCollection from '@/composables/useCollection'
+import { useRouter } from 'vue-router'
 
 const { error, addItemtoDB, isPending } = useCollection('tricks')
+const router = useRouter()
 
 const title = defineModel('title', { default: null })
 const altNames = defineModel('altNames', { default: null })
@@ -33,6 +35,9 @@ const handleSubmit = async () => {
     tags: tags.value,
     motionTags: motionTags.value
   })
+  if (!error.value) {
+    router.push({ name: 'TrickDetails', params: { id: res.id } })
+  }
 }
 </script>
 
