@@ -13,7 +13,7 @@ const handleLogout = async () => {
 </script>
 
 <template>
-  <div class="border-2 border-blue-900 p-2">
+  <div class="border-2 border-blue-900 px-2">
     admin
     <RouterLink :to="{ name: 'CreateTrick' }" class="m-2 text-blue-900 hover:underline">
       Add trick
