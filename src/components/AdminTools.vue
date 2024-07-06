@@ -14,7 +14,11 @@ const handleLogout = async () => {
 
 <template>
   <div class="border-2 border-blue-900 p-2">
-    Hi there admin. Add page Edit this page
+    Hi there admin.
+    <RouterLink :to="{ name: 'CreateTrick' }" class="m-2 text-blue-900 hover:underline">
+      Add trick
+    </RouterLink>
+    Edit this page
     <button @click="handleLogout" class="m-2 text-blue-900 hover:underline">Logout</button>
   </div>
 </template>
