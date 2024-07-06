@@ -24,7 +24,8 @@ const { error, document: trick } = getDocument('tricks', props.id)
     <!-- trick meta info -->
     <div class="flex space-x-4 my-4">
       <div v-if="trick.altNames" class="grow p-2 rounded-md bg-gray-300">
-        <h4 class="font-bold">Alternate Names</h4>
+        <h4 class="font-bold">Names</h4>
+        {{ trick.title }}
         {{ trick.altNames }}
       </div>
 
