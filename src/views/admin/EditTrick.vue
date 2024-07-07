@@ -6,8 +6,25 @@ import { useRouter } from 'vue-router'
 const props = defineProps({ id: String })
 const router = useRouter()
 
+const newTag = defineModel('newTag', { default: '' })
+const newMotionTag = defineModel('newMotionTag', { default: '' })
+
 const { error, document: trick } = getDocument('tricks', props.id)
 const { error: editError, isPending, updateDocument } = useDocument('tricks', props.id)
+
+const handleAddTag = () => {
+  if (!trick.value.tags.includes(newTag.value)) {
+    trick.value.tags.push(newTag.value)
+    newTag.value = ''
+  }
+}
+
+const handleAddMotionTag = () => {
+  if (!trick.value.motionTags.includes(newMotionTag.value)) {
+    trick.value.motionTags.push(newMotionTag.value)
+    newMotionTag.value = ''
+  }
+}
 
 const handleSubmit = async () => {
   await updateDocument(trick.value)
@@ -106,18 +123,21 @@ const handleSubmit = async () => {
         type="text"
         id="newTag"
         placeholder="Add Tag"
-        v-model="trick.newTag"
+        v-model="newTag"
         @keypress.enter.prevent="handleAddTag"
         class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
       />
 
       <!-- motion tags -->
-      <label for="motionTags" class="mt-2 text-sm font-semibold">Motion Tags:</label>
+      <label for="motionTags" class="mt-2 text-sm font-semibold">
+        Motion Tags: {{ trick.motionTags }}
+      </label>
       <input
         type="text"
         id="motionTags"
         placeholder="Motion Tags"
-        v-model="trick.motionTags"
+        v-model="newMotionTag"
+        @keypress.enter.prevent="handleAddMotionTag"
         class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
       />
 

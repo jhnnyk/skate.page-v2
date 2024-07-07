@@ -15,11 +15,21 @@ const relatedTricks = defineModel('relatedTricks', { default: null })
 const sources = defineModel('sources', { default: null })
 const tags = defineModel('tags', { default: [] })
 const newTag = defineModel('newTag')
-const motionTags = defineModel('motionTags', { default: null })
+const motionTags = defineModel('motionTags', { default: [] })
+const newMotionTag = defineModel('newMotionTag')
 
 const handleAddTag = () => {
-  tags.value.push(newTag.value)
-  newTag.value = ''
+  if (!tags.value.includes(newTag.value)) {
+    tags.value.push(newTag.value)
+    newTag.value = ''
+  }
+}
+
+const handleAddMotionTag = () => {
+  if (!motionTags.value.includes(newMotionTag.value)) {
+    motionTags.value.push(newMotionTag.value)
+    newMotionTag.value = ''
+  }
 }
 
 const handleSubmit = async () => {
@@ -133,12 +143,13 @@ const handleSubmit = async () => {
     />
 
     <!-- motion tags -->
-    <label for="motionTags" class="mt-2 text-sm font-semibold">Motion Tags:</label>
+    <label for="motionTags" class="mt-2 text-sm font-semibold">Motion Tags: {{ motionTags }}</label>
     <input
       type="text"
       id="motionTags"
       placeholder="Motion Tags"
-      v-model="motionTags"
+      v-model="newMotionTag"
+      @keypress.enter.prevent="handleAddMotionTag"
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     />
 
