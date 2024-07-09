@@ -35,14 +35,17 @@ const { error, document: trick } = getDocument('tricks', props.id)
         {{ trick.inventor }}
       </div>
 
-      <div v-if="trick.tags || trick.motionTags" class="grow p-2 rounded-md bg-gray-300">
+      <div class="grow p-2 rounded-md bg-gray-300">
         <h4 class="font-bold">Tags</h4>
-        {{ trick.tags }}
-        <AddTag v-if="user" :trick="trick" />
+        <div v-if="trick.tags">
+          {{ trick.tags }}
+        </div>
+        <AddTag v-if="user" :trick="trick" tagType="general" />
 
         <div v-if="trick.motionTags">
           {{ trick.motionTags }}
         </div>
+        <AddTag v-if="user" :trick="trick" tagType="motionTag" />
       </div>
     </div>
 

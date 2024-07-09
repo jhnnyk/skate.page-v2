@@ -1,16 +1,23 @@
 <script setup>
 import useDocument from '@/composables/useDocument'
 
-const props = defineProps({ trick: Object })
+const props = defineProps({ trick: Object, tagType: String })
 const { updateDocument } = useDocument('tricks', props.trick.id)
 
 const showForm = defineModel('showForm', { default: false })
 const newTag = defineModel('newTag')
 
 const handleSubmit = async () => {
-  await updateDocument({
-    tags: [...props.trick.tags, newTag.value]
-  })
+  if (props.tagType == 'general') {
+    await updateDocument({
+      tags: [...props.trick.tags, newTag.value]
+    })
+  } else {
+    await updateDocument({
+      motionTags: [...props.trick.motionTags, newTag.value]
+    })
+  }
+
   newTag.value = ''
 }
 </script>
