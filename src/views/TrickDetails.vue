@@ -24,28 +24,40 @@ const { error, document: trick } = getDocument('tricks', props.id)
 
     <!-- trick meta info -->
     <div class="flex space-x-4 my-4">
-      <div v-if="trick.altNames" class="grow p-2 rounded-md bg-gray-300">
+      <div v-if="trick.altNames" class="grow p-2 rounded-md bg-slate-200">
         <h4 class="font-bold">Names</h4>
         {{ trick.title }}
         {{ trick.altNames }}
       </div>
 
-      <div v-if="trick.inventor" class="grow p-2 rounded-md bg-gray-300">
+      <div v-if="trick.inventor" class="grow p-2 rounded-md bg-slate-200">
         <h4 class="font-bold">Inventor</h4>
         {{ trick.inventor }}
       </div>
 
-      <div class="grow p-2 rounded-md bg-gray-300">
+      <div class="grow p-2 rounded-md bg-slate-200">
         <h4 class="font-bold">Tags</h4>
-        <div v-if="trick.tags">
-          {{ trick.tags }}
+        <div v-if="trick.tags" class="flex">
+          <div
+            v-for="tag in trick.tags"
+            :key="tag"
+            class="text-slate-50 text-sm bg-sky-700 shrink m-1 px-2 rounded-md"
+          >
+            {{ tag }}
+          </div>
+          <AddTag v-if="user" :trick="trick" tagType="general" />
         </div>
-        <AddTag v-if="user" :trick="trick" tagType="general" />
 
-        <div v-if="trick.motionTags">
-          {{ trick.motionTags }}
+        <div v-if="trick.motionTags" class="flex">
+          <div
+            v-for="motionTag in trick.motionTags"
+            :key="motionTag"
+            class="text-slate-50 text-sm bg-sky-700 shrink m-1 px-2 rounded-md"
+          >
+            {{ motionTag }}
+          </div>
+          <AddTag v-if="user" :trick="trick" tagType="motionTag" />
         </div>
-        <AddTag v-if="user" :trick="trick" tagType="motionTag" />
       </div>
     </div>
 
@@ -68,13 +80,13 @@ const { error, document: trick } = getDocument('tricks', props.id)
     </div>
 
     <!-- related tricks -->
-    <div v-if="trick.relatedTricks" class="bg-gray-300 my-4 rounded-md p-2">
+    <div v-if="trick.relatedTricks" class="bg-slate-200 my-4 rounded-md p-2">
       <h4 class="font-bold">Related Tricks</h4>
       {{ trick.relatedTricks }}
     </div>
 
     <!-- sources -->
-    <div v-if="trick.sources" class="bg-gray-300 my-4 rounded-md p-2">
+    <div v-if="trick.sources" class="bg-slate-200 my-4 rounded-md p-2">
       <h4 class="font-bold">Sources</h4>
       {{ trick.sources }}
     </div>

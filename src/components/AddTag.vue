@@ -38,8 +38,9 @@ const handleSubmit = async () => {
         placeholder="New tag"
         v-model="newTag"
         @keypress.enter.prevent="handleSubmit"
+        class="rounded-md px-2 text-sm ml-1"
       />
-      <button @click="showForm = false" class="text-xs pl-2">close</button>
+      <button @click="showForm = false" class="text-xs pl-2">close [x]</button>
     </form>
   </div>
 </template>
