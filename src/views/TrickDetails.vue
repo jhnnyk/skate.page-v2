@@ -1,6 +1,7 @@
 <script setup>
 import getDocument from '@/composables/getDocument'
 import getUser from '@/composables/getUser'
+import AddTag from '@/components/AddTag.vue'
 
 const props = defineProps({ id: String })
 const { user } = getUser()
@@ -39,6 +40,9 @@ const { error, document: trick } = getDocument('tricks', props.id)
         {{ trick.tags }}
         <div v-if="trick.motionTags">
           {{ trick.motionTags }}
+        </div>
+        <div v-if="user">
+          <AddTag />
         </div>
       </div>
     </div>
