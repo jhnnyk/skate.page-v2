@@ -38,11 +38,10 @@ const { error, document: trick } = getDocument('tricks', props.id)
       <div v-if="trick.tags || trick.motionTags" class="grow p-2 rounded-md bg-gray-300">
         <h4 class="font-bold">Tags</h4>
         {{ trick.tags }}
+        <AddTag v-if="user" :trick="trick" />
+
         <div v-if="trick.motionTags">
           {{ trick.motionTags }}
-        </div>
-        <div v-if="user">
-          <AddTag />
         </div>
       </div>
     </div>
