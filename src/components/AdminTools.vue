@@ -13,11 +13,13 @@ const handleLogout = async () => {
 </script>
 
 <template>
-  <div class="border-2 border-blue-900 px-2">
-    admin
-    <RouterLink :to="{ name: 'CreateTrick' }" class="m-2 text-blue-900 hover:underline">
-      Add trick
-    </RouterLink>
-    <button @click="handleLogout" class="m-2 text-blue-900 hover:underline">Logout</button>
+  <div class="flex justify-end">
+    <div class="shrink text-slate-50 text-sm pl-5 pr-2 bg-sky-700 rounded-bl-lg">
+      admin:
+      <RouterLink :to="{ name: 'CreateTrick' }" class="m-2 text-slate-50 hover:underline">
+        Add trick
+      </RouterLink>
+      <button @click="handleLogout" class="m-2 text-slate-50 hover:underline">Logout</button>
+    </div>
   </div>
 </template>

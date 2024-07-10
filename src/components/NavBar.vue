@@ -6,10 +6,10 @@ const { user } = getUser()
 </script>
 
 <template>
-  <header class="flex justify-between items-center bg-gray-300 p-4">
+  <header class="flex justify-between items-center text-slate-50 bg-sky-700 p-4">
     <RouterLink to="/" class="text-3xl">Skate.page</RouterLink>
     <nav>
-      <RouterLink :to="{ name: 'TrickIndex' }" class="text-blue-900 hover:underline">
+      <RouterLink :to="{ name: 'TrickIndex' }" class="text-slate-50 hover:underline">
         Trick Index
       </RouterLink>
     </nav>
