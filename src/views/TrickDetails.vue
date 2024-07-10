@@ -1,12 +1,23 @@
 <script setup>
 import getDocument from '@/composables/getDocument'
+import useDocument from '@/composables/useDocument'
 import getUser from '@/composables/getUser'
 import AddTag from '@/components/AddTag.vue'
 
 const props = defineProps({ id: String })
 const { user } = getUser()
-
 const { error, document: trick } = getDocument('tricks', props.id)
+const { updateDocument } = useDocument('tricks', props.id)
+
+const handleDeleteTag = async (tagName) => {
+  const newTagList = trick.value.tags.filter((tag) => tag != tagName)
+  await updateDocument({ tags: newTagList })
+}
+
+const handleDeleteMotionTag = async (tagName) => {
+  const newMotionTagList = trick.value.motionTags.filter((tag) => tag != tagName)
+  await updateDocument({ motionTags: newMotionTagList })
+}
 </script>
 
 <template>
@@ -39,22 +50,26 @@ const { error, document: trick } = getDocument('tricks', props.id)
         <h4 class="font-bold">Tags</h4>
         <div v-if="trick.tags" class="flex">
           <div
-            v-for="tag in trick.tags"
-            :key="tag"
+            v-for="tagName in trick.tags"
+            :key="tagName"
             class="text-slate-50 text-sm bg-sky-700 shrink m-1 px-2 rounded-md"
           >
-            {{ tag }}
+            {{ tagName }}
+            <button v-if="user" class="text-xs" @click="handleDeleteTag(tagName)">[x]</button>
           </div>
           <AddTag v-if="user" :trick="trick" tagType="general" />
         </div>
 
         <div v-if="trick.motionTags" class="flex">
           <div
-            v-for="motionTag in trick.motionTags"
-            :key="motionTag"
+            v-for="motionTagName in trick.motionTags"
+            :key="motionTagName"
             class="text-slate-50 text-sm bg-sky-700 shrink m-1 px-2 rounded-md"
           >
-            {{ motionTag }}
+            {{ motionTagName }}
+            <button v-if="user" class="text-xs" @click="handleDeleteMotionTag(motionTagName)">
+              [x]
+            </button>
           </div>
           <AddTag v-if="user" :trick="trick" tagType="motionTag" />
         </div>
