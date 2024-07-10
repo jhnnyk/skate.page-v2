@@ -19,6 +19,11 @@ const handleDeleteMotionTag = async (tagName) => {
   const newMotionTagList = trick.value.motionTags.filter((tag) => tag != tagName)
   await updateDocument({ motionTags: newMotionTagList })
 }
+
+const handleDeleteName = async (name) => {
+  const newNameList = trick.value.names.filter((n) => n.name != name)
+  await updateDocument({ names: newNameList })
+}
 </script>
 
 <template>
@@ -40,7 +45,13 @@ const handleDeleteMotionTag = async (tagName) => {
         <!-- trick names -->
         <h4 class="font-bold">Names</h4>
         <ul v-for="name in trick.names" :key="name" class="list-disc ml-4">
-          <li>{{ name }}</li>
+          <li>
+            {{ name.name }}
+            <div v-if="user">
+              <input type="checkbox" id="show" :checked="name.showInToC" />
+              <button class="text-xs" @click="handleDeleteName(name.name)">[x]</button>
+            </div>
+          </li>
         </ul>
         <AddName v-if="user" :trick="trick" />
       </div>
