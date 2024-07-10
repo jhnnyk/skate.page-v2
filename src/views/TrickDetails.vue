@@ -46,10 +46,15 @@ const handleDeleteName = async (name) => {
         <h4 class="font-bold">Names</h4>
         <ul v-for="name in trick.names" :key="name" class="list-disc ml-4">
           <li>
-            {{ name.name }}
-            <div v-if="user">
-              <input type="checkbox" id="show" :checked="name.showInToC" />
-              <button class="text-xs" @click="handleDeleteName(name.name)">[x]</button>
+            <div class="flex">
+              {{ name.name }}
+              <div v-if="user">
+                <label for="show">
+                  <input type="checkbox" name="show" :checked="name.showInToC" class="ml-1" />
+                  <span class="text-sm mx-1">show in ToC?</span>
+                </label>
+                <button class="text-xs" @click="handleDeleteName(name.name)">[x]</button>
+              </div>
             </div>
           </li>
         </ul>
@@ -101,16 +106,16 @@ const handleDeleteName = async (name) => {
       {{ trick.description }}
     </div>
 
-    <!-- trick history -->
-    <div v-if="trick.history" class="mx-auto my-4 px-20">
-      <h3 class="text-2xl text-center">History</h3>
-      {{ trick.history }}
-    </div>
-
     <!-- trick videos -->
     <div v-if="trick.videos" class="mx-auto my-4 px-20">
       <h3 class="text-2xl text-center">Videos</h3>
       {{ trick.videos }}
+    </div>
+
+    <!-- trick history -->
+    <div v-if="trick.history" class="mx-auto my-4 px-20">
+      <h3 class="text-2xl text-center">History</h3>
+      {{ trick.history }}
     </div>
 
     <!-- related tricks -->
