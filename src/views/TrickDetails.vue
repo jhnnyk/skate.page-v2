@@ -3,6 +3,7 @@ import getDocument from '@/composables/getDocument'
 import useDocument from '@/composables/useDocument'
 import getUser from '@/composables/getUser'
 import AddTag from '@/components/AddTag.vue'
+import AddName from '@/components/AddName.vue'
 
 const props = defineProps({ id: String })
 const { user } = getUser()
@@ -35,22 +36,25 @@ const handleDeleteMotionTag = async (tagName) => {
 
     <!-- trick meta info -->
     <div class="flex space-x-4 my-4">
-      <div v-if="trick.altNames" class="grow p-2 rounded-md bg-slate-200">
+      <div class="grow p-2 rounded-md bg-slate-200">
+        <!-- trick names -->
         <h4 class="font-bold">Names</h4>
-        <ul class="list-disc ml-4">
-          <li>{{ trick.title }}</li>
+        <ul v-for="name in trick.names" :key="name" class="list-disc ml-4">
+          <li>{{ name }}</li>
         </ul>
-
-        {{ trick.altNames }}
+        <AddName v-if="user" :trick="trick" />
       </div>
 
+      <!-- trick inventor -->
       <div v-if="trick.inventor" class="grow p-2 rounded-md bg-slate-200">
         <h4 class="font-bold">Inventor</h4>
         {{ trick.inventor }}
       </div>
 
+      <!-- trick tags -->
       <div class="grow p-2 rounded-md bg-slate-200">
         <h4 class="font-bold">Tags</h4>
+        <!-- general tags -->
         <div v-if="trick.tags" class="flex">
           <div
             v-for="tagName in trick.tags"
@@ -63,6 +67,7 @@ const handleDeleteMotionTag = async (tagName) => {
           <AddTag v-if="user" :trick="trick" tagType="general" />
         </div>
 
+        <!-- motion tags -->
         <div v-if="trick.motionTags" class="flex">
           <div
             v-for="motionTagName in trick.motionTags"
