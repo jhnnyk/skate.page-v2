@@ -6,36 +6,36 @@ const { error, addItemtoDB, isPending } = useCollection('tricks')
 const router = useRouter()
 
 const title = defineModel('title', { default: null })
-const altNames = defineModel('altNames', { default: null })
+const names = defineModel('names', { default: [] })
 const inventor = defineModel('inventor', { default: null })
 const description = defineModel('description', { default: null })
 const history = defineModel('history', { default: null })
 const videos = defineModel('videos', { default: null })
-const relatedTricks = defineModel('relatedTricks', { default: null })
+const relatedTricks = defineModel('relatedTricks', { default: [] })
 const sources = defineModel('sources', { default: null })
 const tags = defineModel('tags', { default: [] })
-const newTag = defineModel('newTag')
+// const newTag = defineModel('newTag')
 const motionTags = defineModel('motionTags', { default: [] })
-const newMotionTag = defineModel('newMotionTag')
+// const newMotionTag = defineModel('newMotionTag')
 
-const handleAddTag = () => {
-  if (!tags.value.includes(newTag.value)) {
-    tags.value.push(newTag.value)
-    newTag.value = ''
-  }
-}
+// const handleAddTag = () => {
+//   if (!tags.value.includes(newTag.value)) {
+//     tags.value.push(newTag.value)
+//     newTag.value = ''
+//   }
+// }
 
-const handleAddMotionTag = () => {
-  if (!motionTags.value.includes(newMotionTag.value)) {
-    motionTags.value.push(newMotionTag.value)
-    newMotionTag.value = ''
-  }
-}
+// const handleAddMotionTag = () => {
+//   if (!motionTags.value.includes(newMotionTag.value)) {
+//     motionTags.value.push(newMotionTag.value)
+//     newMotionTag.value = ''
+//   }
+// }
 
 const handleSubmit = async () => {
   const res = await addItemtoDB({
     title: title.value,
-    altNames: altNames.value,
+    names: names.value,
     inventor: inventor.value,
     description: description.value,
     history: history.value,
@@ -55,7 +55,7 @@ const handleSubmit = async () => {
   <h1 class="text-3xl text-center m-4">Add a new trick</h1>
 
   <form @submit.prevent="handleSubmit" class="flex flex-col max-w-96 mx-auto pb-14">
-    <!-- trick name -->
+    <!-- trick title -->
     <label for="title" class="mt-2 text-sm font-semibold">Trick Name:</label>
     <input
       type="text"
@@ -66,14 +66,14 @@ const handleSubmit = async () => {
     />
 
     <!-- alternate names for trick -->
-    <label for="altNames" class="mt-2 text-sm font-semibold">Alternate Trick Names:</label>
+    <!-- <label for="names" class="mt-2 text-sm font-semibold">Alternate Trick Names:</label>
     <input
       type="text"
-      id="altNames"
+      id="names"
       placeholder="Alternate Trick Name"
-      v-model="altNames"
+      v-model="names"
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-    />
+    /> -->
 
     <!-- trick inventor -->
     <label for="inventor" class="mt-2 text-sm font-semibold">Inventor:</label>
@@ -113,14 +113,14 @@ const handleSubmit = async () => {
     ></textarea>
 
     <!-- related tricks -->
-    <label for="relatedTricks" class="mt-2 text-sm font-semibold">Related Tricks:</label>
+    <!-- <label for="relatedTricks" class="mt-2 text-sm font-semibold">Related Tricks:</label>
     <input
       type="text"
       id="relatedTricks"
       placeholder="Related Tricks"
       v-model="relatedTricks"
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-    />
+    /> -->
 
     <!-- trick sources -->
     <label for="sources" class="mt-2 text-sm font-semibold">Sources:</label>
@@ -132,7 +132,7 @@ const handleSubmit = async () => {
     ></textarea>
 
     <!-- tags -->
-    <label for="newTag" class="mt-2 text-sm font-semibold">Tags: {{ tags }}</label>
+    <!-- <label for="newTag" class="mt-2 text-sm font-semibold">Tags: {{ tags }}</label>
     <input
       type="text"
       id="newTag"
@@ -140,10 +140,10 @@ const handleSubmit = async () => {
       v-model="newTag"
       @keypress.enter.prevent="handleAddTag"
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-    />
+    /> -->
 
     <!-- motion tags -->
-    <label for="motionTags" class="mt-2 text-sm font-semibold">Motion Tags: {{ motionTags }}</label>
+    <!-- <label for="motionTags" class="mt-2 text-sm font-semibold">Motion Tags: {{ motionTags }}</label>
     <input
       type="text"
       id="motionTags"
@@ -151,7 +151,7 @@ const handleSubmit = async () => {
       v-model="newMotionTag"
       @keypress.enter.prevent="handleAddMotionTag"
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-    />
+    /> -->
 
     <!-- error message -->
     <div v-if="error" class="text-red-600 m-4">{{ error }}</div>

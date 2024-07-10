@@ -37,7 +37,10 @@ const handleDeleteMotionTag = async (tagName) => {
     <div class="flex space-x-4 my-4">
       <div v-if="trick.altNames" class="grow p-2 rounded-md bg-slate-200">
         <h4 class="font-bold">Names</h4>
-        {{ trick.title }}
+        <ul class="list-disc ml-4">
+          <li>{{ trick.title }}</li>
+        </ul>
+
         {{ trick.altNames }}
       </div>
 

@@ -20,27 +20,16 @@ const handleSubmit = async () => {
 <template>
   <div v-if="error" class="text-red-500 m-4">{{ error }}</div>
   <div v-if="trick">
-    <h1 class="text-3xl text-center m-4">Edit trick</h1>
-    <p>edit trick - {{ trick.title }}</p>
+    <h1 class="text-3xl text-center m-4">Edit {{ trick.title }}</h1>
 
     <form @submit.prevent="handleSubmit" class="flex flex-col max-w-96 mx-auto pb-14">
-      <!-- trick name -->
+      <!-- trick title -->
       <label for="title" class="mt-2 text-sm font-semibold">Trick Name:</label>
       <input
         type="text"
         id="title"
         placeholder="Trick Name"
         v-model="trick.title"
-        class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-      />
-
-      <!-- alternate names for trick -->
-      <label for="altNames" class="mt-2 text-sm font-semibold">Alternate Trick Names:</label>
-      <input
-        type="text"
-        id="altNames"
-        placeholder="Alternate Trick Name"
-        v-model="trick.altNames"
         class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
       />
 
@@ -82,14 +71,14 @@ const handleSubmit = async () => {
       ></textarea>
 
       <!-- related tricks -->
-      <label for="relatedTricks" class="mt-2 text-sm font-semibold">Related Tricks:</label>
+      <!-- <label for="relatedTricks" class="mt-2 text-sm font-semibold">Related Tricks:</label>
       <input
         type="text"
         id="relatedTricks"
         placeholder="Related Tricks"
         v-model="trick.relatedTricks"
         class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-      />
+      /> -->
 
       <!-- trick sources -->
       <label for="sources" class="mt-2 text-sm font-semibold">Sources:</label>
