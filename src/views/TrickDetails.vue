@@ -48,13 +48,25 @@ const handleDeleteName = async (name) => {
           <li>
             <div class="flex">
               {{ name.name }}
-              <div v-if="user">
-                <label for="show">
-                  <input type="checkbox" name="show" :checked="name.showInToC" class="ml-1" />
-                  <span class="text-sm mx-1">show in ToC?</span>
-                </label>
-                <button class="text-xs" @click="handleDeleteName(name.name)">[x]</button>
-              </div>
+
+              <img
+                src="/src/assets/icons/eye-slash-fill.svg"
+                alt="show in ToC"
+                width="20"
+                height="20"
+                v-if="user && !name.showInToC"
+                class="ml-1"
+              />
+              <button class="text-xs ml-1" @click="handleDeleteName(name.name)" v-if="user">
+                <img
+                  src="/src/assets/icons/trash3-fill.svg"
+                  alt="delete"
+                  width="14"
+                  height="14"
+                  v-if="user && !name.showInToC"
+                  class="ml-1"
+                />
+              </button>
             </div>
           </li>
         </ul>
@@ -78,7 +90,15 @@ const handleDeleteName = async (name) => {
             class="text-slate-50 text-sm bg-sky-700 shrink m-1 px-2 rounded-md"
           >
             {{ tagName }}
-            <button v-if="user" class="text-xs" @click="handleDeleteTag(tagName)">[x]</button>
+            <button v-if="user" @click="handleDeleteTag(tagName)">
+              <img
+                src="/src/assets/icons/trash3-fill.svg"
+                alt="delete"
+                width="12"
+                height="12"
+                class="ml-1"
+              />
+            </button>
           </div>
           <AddTag v-if="user" :trick="trick" tagType="general" />
         </div>
@@ -92,7 +112,13 @@ const handleDeleteName = async (name) => {
           >
             {{ motionTagName }}
             <button v-if="user" class="text-xs" @click="handleDeleteMotionTag(motionTagName)">
-              [x]
+              <img
+                src="/src/assets/icons/trash3-fill.svg"
+                alt="delete"
+                width="12"
+                height="12"
+                class="ml-1"
+              />
             </button>
           </div>
           <AddTag v-if="user" :trick="trick" tagType="motionTag" />
