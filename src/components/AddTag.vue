@@ -9,13 +9,17 @@ const newTag = defineModel('newTag')
 
 const handleSubmit = async () => {
   if (props.tagType == 'general') {
-    await updateDocument({
-      tags: [...props.trick.tags, newTag.value]
-    })
+    if (!props.trick.tags.includes(newTag.value)) {
+      await updateDocument({
+        tags: [...props.trick.tags, newTag.value]
+      })
+    }
   } else {
-    await updateDocument({
-      motionTags: [...props.trick.motionTags, newTag.value]
-    })
+    if (!props.trick.motionTags.includes(newTag.value)) {
+      await updateDocument({
+        motionTags: [...props.trick.motionTags, newTag.value]
+      })
+    }
   }
 
   newTag.value = ''
