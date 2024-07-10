@@ -63,7 +63,7 @@ const handleDeleteName = async (name) => {
                   alt="delete"
                   width="14"
                   height="14"
-                  v-if="user && !name.showInToC"
+                  v-if="user"
                   class="ml-1"
                 />
               </button>
@@ -104,7 +104,7 @@ const handleDeleteName = async (name) => {
         </div>
 
         <!-- motion tags -->
-        <div v-if="trick.motionTags" class="flex">
+        <div v-if="trick.motionTags" class="flex border-t-2 border-slate-50 mt-2 pt-2">
           <div
             v-for="motionTagName in trick.motionTags"
             :key="motionTagName"

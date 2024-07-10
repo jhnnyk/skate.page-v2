@@ -4,7 +4,7 @@ import useDocument from '@/composables/useDocument'
 const props = defineProps({ trick: Object })
 const showForm = defineModel('showForm', { default: false })
 const name = defineModel('name')
-const showInToC = defineModel('showInToC', { default: false })
+const showInToC = defineModel('showInToC', { default: true })
 const { updateDocument } = useDocument('tricks', props.trick.id)
 
 const handleSubmit = async () => {
