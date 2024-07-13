@@ -72,6 +72,7 @@ const sortedMotionTags = computed(() => {
                 v-if="user && !name.showInToC"
                 class="ml-1"
               />
+
               <button class="text-xs ml-1" @click="handleDeleteName(name.name)" v-if="user">
                 <img
                   src="/src/assets/icons/trash3-fill.svg"
