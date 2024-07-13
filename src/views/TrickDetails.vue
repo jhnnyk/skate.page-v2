@@ -4,8 +4,8 @@ import useDocument from '@/composables/useDocument'
 import getUser from '@/composables/getUser'
 import AddTag from '@/components/AddTag.vue'
 
-import AddInventor from '@/components/AddInventor.vue'
 import TrickNames from '@/components/trick-names/TrickNames.vue'
+import TrickInventors from '@/components/trick-inventors/TrickInventors.vue'
 import { computed } from 'vue'
 
 const props = defineProps({ id: String })
@@ -21,11 +21,6 @@ const handleDeleteTag = async (tagName) => {
 const handleDeleteMotionTag = async (tagName) => {
   const newMotionTagList = trick.value.motionTags.filter((tag) => tag != tagName)
   await updateDocument({ motionTags: newMotionTagList })
-}
-
-const handleDeleteInventor = async (inventorName) => {
-  const newInventorList = trick.value.inventors.filter((i) => i != inventorName)
-  await updateDocument({ inventors: newInventorList })
 }
 
 const sortedTags = computed(() => {
@@ -54,29 +49,7 @@ const sortedMotionTags = computed(() => {
     <div class="flex space-x-4 my-4">
       <TrickNames :trick="trick" />
 
-      <!-- trick inventor -->
-      <div class="grow p-2 rounded-md bg-slate-200">
-        <h4 class="font-bold">Inventor(s)</h4>
-        <ul v-for="inventor in trick.inventors" :key="inventor" class="list-disc ml-4">
-          <li>
-            <RouterLink
-              :to="{ name: 'InventorDetails', params: { name: inventor } }"
-              class="text-sky-700 hover:underline"
-              >{{ inventor }}</RouterLink
-            >
-            <button v-if="user" @click="handleDeleteInventor(inventor)">
-              <img
-                src="/src/assets/icons/trash3-fill.svg"
-                alt="delete"
-                width="12"
-                height="12"
-                class="ml-1"
-              />
-            </button>
-          </li>
-        </ul>
-        <AddInventor v-if="user" :trick="trick" />
-      </div>
+      <TrickInventors :trick="trick" />
 
       <!-- trick tags -->
       <div class="grow p-2 rounded-md bg-slate-200">
