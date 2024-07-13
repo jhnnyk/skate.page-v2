@@ -52,21 +52,21 @@ const handleSubmit = async () => {
         class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
       ></textarea>
 
-      <!-- trick history -->
-      <label for="history" class="mt-2 text-sm font-semibold">History:</label>
-      <textarea
-        id="history"
-        placeholder="History..."
-        v-model="trick.history"
-        class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-      ></textarea>
-
       <!-- videos -->
       <label for="videos" class="mt-2 text-sm font-semibold">Videos:</label>
       <textarea
         id="videos"
         placeholder="Videos..."
         v-model="trick.videos"
+        class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
+      ></textarea>
+
+      <!-- trick history -->
+      <label for="history" class="mt-2 text-sm font-semibold">History:</label>
+      <textarea
+        id="history"
+        placeholder="History..."
+        v-model="trick.history"
         class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
       ></textarea>
 

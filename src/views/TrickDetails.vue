@@ -162,19 +162,19 @@ const sortedMotionTags = computed(() => {
     <!-- trick description -->
     <div v-if="trick.description" class="mx-auto my-4 px-20">
       <h3 class="text-2xl text-center">Description</h3>
-      {{ trick.description }}
+      <span v-html="trick.description"></span>
     </div>
 
     <!-- trick videos -->
     <div v-if="trick.videos" class="mx-auto my-4 px-20">
       <h3 class="text-2xl text-center">Videos</h3>
-      {{ trick.videos }}
+      <span v-html="trick.videos"></span>
     </div>
 
     <!-- trick history -->
     <div v-if="trick.history" class="mx-auto my-4 px-20">
       <h3 class="text-2xl text-center">History</h3>
-      {{ trick.history }}
+      <span v-html="trick.history"></span>
     </div>
 
     <!-- related tricks -->
