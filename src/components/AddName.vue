@@ -16,7 +16,7 @@ const handleSubmit = async () => {
     names: [...props.trick.names, newName]
   })
   name.value = ''
-  showInToC.value = false
+  showInToC.value = true
 }
 </script>
 

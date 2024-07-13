@@ -7,7 +7,7 @@ const router = useRouter()
 
 const title = defineModel('title', { default: null })
 const names = defineModel('names', { default: [] })
-const inventor = defineModel('inventor', { default: null })
+const inventors = defineModel('inventor', { default: [] })
 const description = defineModel('description', { default: null })
 const history = defineModel('history', { default: null })
 const videos = defineModel('videos', { default: null })
@@ -36,7 +36,7 @@ const handleSubmit = async () => {
   const res = await addItemtoDB({
     title: title.value,
     names: names.value,
-    inventor: inventor.value,
+    inventors: inventors.value,
     description: description.value,
     history: history.value,
     videos: videos.value,
@@ -76,14 +76,14 @@ const handleSubmit = async () => {
     /> -->
 
     <!-- trick inventor -->
-    <label for="inventor" class="mt-2 text-sm font-semibold">Inventor:</label>
+    <!-- <label for="inventor" class="mt-2 text-sm font-semibold">Inventor:</label>
     <input
       type="text"
       id="inventor"
       placeholder="Inventor"
       v-model="inventor"
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-    />
+    /> -->
 
     <!-- trick description -->
     <label for="description" class="mt-2 text-sm font-semibold">Description:</label>
@@ -94,21 +94,21 @@ const handleSubmit = async () => {
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     ></textarea>
 
-    <!-- trick history -->
-    <label for="history" class="mt-2 text-sm font-semibold">History:</label>
-    <textarea
-      id="history"
-      placeholder="History..."
-      v-model="history"
-      class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-    ></textarea>
-
     <!-- videos -->
     <label for="videos" class="mt-2 text-sm font-semibold">Videos:</label>
     <textarea
       id="videos"
       placeholder="Videos..."
       v-model="videos"
+      class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
+    ></textarea>
+
+    <!-- trick history -->
+    <label for="history" class="mt-2 text-sm font-semibold">History:</label>
+    <textarea
+      id="history"
+      placeholder="History..."
+      v-model="history"
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
     ></textarea>
 

@@ -34,14 +34,14 @@ const handleSubmit = async () => {
       />
 
       <!-- trick inventor -->
-      <label for="inventor" class="mt-2 text-sm font-semibold">Inventor:</label>
+      <!-- <label for="inventor" class="mt-2 text-sm font-semibold">Inventor:</label>
       <input
         type="text"
         id="inventor"
         placeholder="Inventor"
         v-model="trick.inventor"
         class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
-      />
+      /> -->
 
       <!-- trick description -->
       <label for="description" class="mt-2 text-sm font-semibold">Description:</label>
