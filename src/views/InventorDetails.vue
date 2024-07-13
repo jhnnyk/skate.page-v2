@@ -7,8 +7,9 @@ const { documents: tricks } = getCollection('tricks', ['inventors', 'array-conta
 </script>
 
 <template>
-  <h1 class="text-5xl text-center">{{ name }}</h1>
-  <ul v-for="trick in tricks" :key="trick.id">
+  <h1 class="text-5xl text-center my-4">{{ name }}</h1>
+  <p class="text-center pt-4">Tricks invented:</p>
+  <ul v-for="trick in tricks" :key="trick.id" class="text-center">
     <li>
       <RouterLink
         :to="{ name: 'TrickDetails', params: { id: trick.id } }"
