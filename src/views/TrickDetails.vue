@@ -5,6 +5,7 @@ import getUser from '@/composables/getUser'
 import AddTag from '@/components/AddTag.vue'
 import AddName from '@/components/AddName.vue'
 import AddInventor from '@/components/AddInventor.vue'
+import { computed } from 'vue'
 
 const props = defineProps({ id: String })
 const { user } = getUser()
@@ -30,6 +31,14 @@ const handleDeleteInventor = async (inventorName) => {
   const newInventorList = trick.value.inventors.filter((i) => i != inventorName)
   await updateDocument({ inventors: newInventorList })
 }
+
+const sortedTags = computed(() => {
+  return [...trick.value.tags].sort()
+})
+
+const sortedMotionTags = computed(() => {
+  return [...trick.value.motionTags].sort()
+})
 </script>
 
 <template>
@@ -109,7 +118,7 @@ const handleDeleteInventor = async (inventorName) => {
         <!-- general tags -->
         <div class="flex">
           <div
-            v-for="tagName in trick.tags"
+            v-for="tagName in sortedTags"
             :key="tagName"
             class="text-slate-50 text-sm bg-sky-700 shrink m-1 px-2 rounded-md"
           >
@@ -130,7 +139,7 @@ const handleDeleteInventor = async (inventorName) => {
         <!-- motion tags -->
         <div class="flex border-t-2 border-slate-50 mt-2 pt-2">
           <div
-            v-for="motionTagName in trick.motionTags"
+            v-for="motionTagName in sortedMotionTags"
             :key="motionTagName"
             class="text-slate-50 text-sm bg-sky-700 shrink m-1 px-2 rounded-md"
           >
