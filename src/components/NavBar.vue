@@ -12,6 +12,9 @@ const { user } = getUser()
       <RouterLink :to="{ name: 'TrickIndex' }" class="text-slate-50 hover:underline">
         Trick Index
       </RouterLink>
+      <RouterLink :to="{ name: 'InventorsIndex' }" class="text-slate-50 hover:underline ml-4">
+        Inventors
+      </RouterLink>
     </nav>
   </header>
   <AdminTools v-if="user" />
