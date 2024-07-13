@@ -1,8 +1,8 @@
 import { ref, watchEffect } from 'vue'
 import { db } from '@/firebase/config'
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestore'
 
-const getCollection = (collectionName) => {
+const getCollection = (collectionName, userQuery) => {
   const documents = ref(null)
   const error = ref(null)
 
@@ -10,7 +10,11 @@ const getCollection = (collectionName) => {
   let collectionRef = collection(db, collectionName)
   let q
 
-  q = query(collectionRef, orderBy('title'))
+  if (userQuery) {
+    q = query(collectionRef, where(...userQuery), orderBy('title'))
+  } else {
+    q = query(collectionRef, orderBy('title'))
+  }
 
   const unsub = onSnapshot(
     q,
