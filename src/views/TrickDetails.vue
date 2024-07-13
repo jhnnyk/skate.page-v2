@@ -25,6 +25,11 @@ const handleDeleteName = async (name) => {
   const newNameList = trick.value.names.filter((n) => n.name != name)
   await updateDocument({ names: newNameList })
 }
+
+const handleDeleteInventor = async (inventorName) => {
+  const newInventorList = trick.value.inventors.filter((i) => i != inventorName)
+  await updateDocument({ inventors: newInventorList })
+}
 </script>
 
 <template>
@@ -78,10 +83,20 @@ const handleDeleteName = async (name) => {
       <div class="grow p-2 rounded-md bg-slate-200">
         <h4 class="font-bold">Inventor(s)</h4>
         <ul v-for="inventor in trick.inventors" :key="inventor" class="list-disc ml-4">
-          <li>{{ inventor }}</li>
+          <li>
+            {{ inventor }}
+            <button v-if="user" @click="handleDeleteInventor(inventor)">
+              <img
+                src="/src/assets/icons/trash3-fill.svg"
+                alt="delete"
+                width="12"
+                height="12"
+                class="ml-1"
+              />
+            </button>
+          </li>
         </ul>
         <AddInventor v-if="user" :trick="trick" />
-        {{ trick.inventors }}
       </div>
 
       <!-- trick tags -->
