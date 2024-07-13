@@ -3,8 +3,9 @@ import getDocument from '@/composables/getDocument'
 import useDocument from '@/composables/useDocument'
 import getUser from '@/composables/getUser'
 import AddTag from '@/components/AddTag.vue'
-import AddName from '@/components/AddName.vue'
+
 import AddInventor from '@/components/AddInventor.vue'
+import TrickNames from '@/components/trick-names/TrickNames.vue'
 import { computed } from 'vue'
 
 const props = defineProps({ id: String })
@@ -20,11 +21,6 @@ const handleDeleteTag = async (tagName) => {
 const handleDeleteMotionTag = async (tagName) => {
   const newMotionTagList = trick.value.motionTags.filter((tag) => tag != tagName)
   await updateDocument({ motionTags: newMotionTagList })
-}
-
-const handleDeleteName = async (name) => {
-  const newNameList = trick.value.names.filter((n) => n.name != name)
-  await updateDocument({ names: newNameList })
 }
 
 const handleDeleteInventor = async (inventorName) => {
@@ -56,38 +52,7 @@ const sortedMotionTags = computed(() => {
 
     <!-- trick meta info -->
     <div class="flex space-x-4 my-4">
-      <div class="grow p-2 rounded-md bg-slate-200">
-        <!-- trick names -->
-        <h4 class="font-bold">Names</h4>
-        <ul v-for="name in trick.names" :key="name" class="list-disc ml-4">
-          <li>
-            <div class="flex">
-              {{ name.name }}
-
-              <img
-                src="/src/assets/icons/eye-slash-fill.svg"
-                alt="show in ToC"
-                width="20"
-                height="20"
-                v-if="user && !name.showInToC"
-                class="ml-1"
-              />
-
-              <button class="text-xs ml-1" @click="handleDeleteName(name.name)" v-if="user">
-                <img
-                  src="/src/assets/icons/trash3-fill.svg"
-                  alt="delete"
-                  width="14"
-                  height="14"
-                  v-if="user"
-                  class="ml-1"
-                />
-              </button>
-            </div>
-          </li>
-        </ul>
-        <AddName v-if="user" :trick="trick" />
-      </div>
+      <TrickNames :trick="trick" />
 
       <!-- trick inventor -->
       <div class="grow p-2 rounded-md bg-slate-200">
