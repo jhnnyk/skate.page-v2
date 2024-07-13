@@ -8,7 +8,7 @@ const { user } = getUser()
 const { updateDocument } = useDocument('tricks', props.trick.id)
 
 const handleDeleteName = async (name) => {
-  const newNameList = props.trick.value.names.filter((n) => n.name != name)
+  const newNameList = props.trick.names.filter((n) => n.name != name)
   await updateDocument({ names: newNameList })
 }
 </script>
