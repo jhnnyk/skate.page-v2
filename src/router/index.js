@@ -6,6 +6,7 @@ import TrickDetails from '@/views/TrickDetails.vue'
 import EditTrick from '@/views/admin/EditTrick.vue'
 import TrickIndex from '@/views/TrickIndex.vue'
 import InventorsIndex from '@/views/InventorsIndex.vue'
+import InventorDetails from '@/views/InventorDetails.vue'
 import { auth } from '@/firebase/config'
 
 // route guards
@@ -59,6 +60,12 @@ const router = createRouter({
       path: '/inventors',
       name: 'InventorsIndex',
       component: InventorsIndex
+    },
+    {
+      path: '/inventor/:name',
+      name: 'InventorDetails',
+      component: InventorDetails,
+      props: true
     }
   ]
 })

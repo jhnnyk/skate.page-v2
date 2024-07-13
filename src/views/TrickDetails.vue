@@ -40,7 +40,7 @@ const handleDeleteInventor = async (inventorName) => {
     <h1 class="text-5xl text-center mt-4">{{ trick.title }}</h1>
     <!-- admin -->
     <div v-if="user" class="text-center text-sm">
-      <RouterLink :to="{ name: 'EditTrick' }" class="m-2 text-blue-900 hover:underline">
+      <RouterLink :to="{ name: 'EditTrick' }" class="m-2 text-sky-700 hover:underline">
         edit
       </RouterLink>
     </div>
@@ -84,7 +84,11 @@ const handleDeleteInventor = async (inventorName) => {
         <h4 class="font-bold">Inventor(s)</h4>
         <ul v-for="inventor in trick.inventors" :key="inventor" class="list-disc ml-4">
           <li>
-            {{ inventor }}
+            <RouterLink
+              :to="{ name: 'InventorDetails', params: { name: inventor } }"
+              class="text-sky-700 hover:underline"
+              >{{ inventor }}</RouterLink
+            >
             <button v-if="user" @click="handleDeleteInventor(inventor)">
               <img
                 src="/src/assets/icons/trash3-fill.svg"
