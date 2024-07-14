@@ -1,35 +1,14 @@
 <script setup>
 import getDocument from '@/composables/getDocument'
-import useDocument from '@/composables/useDocument'
 import getUser from '@/composables/getUser'
-import AddTag from '@/components/AddTag.vue'
 
 import TrickNames from '@/components/trick-names/TrickNames.vue'
 import TrickInventors from '@/components/trick-inventors/TrickInventors.vue'
-import { computed } from 'vue'
+import TrickTags from '@/components/trick-tags/TrickTags.vue'
 
 const props = defineProps({ id: String })
 const { user } = getUser()
 const { error, document: trick } = getDocument('tricks', props.id)
-const { updateDocument } = useDocument('tricks', props.id)
-
-const handleDeleteTag = async (tagName) => {
-  const newTagList = trick.value.tags.filter((tag) => tag != tagName)
-  await updateDocument({ tags: newTagList })
-}
-
-const handleDeleteMotionTag = async (tagName) => {
-  const newMotionTagList = trick.value.motionTags.filter((tag) => tag != tagName)
-  await updateDocument({ motionTags: newMotionTagList })
-}
-
-const sortedTags = computed(() => {
-  return [...trick.value.tags].sort()
-})
-
-const sortedMotionTags = computed(() => {
-  return [...trick.value.motionTags].sort()
-})
 </script>
 
 <template>
@@ -51,51 +30,7 @@ const sortedMotionTags = computed(() => {
 
       <TrickInventors :trick="trick" />
 
-      <!-- trick tags -->
-      <div class="grow p-2 rounded-md bg-slate-200">
-        <h4 class="font-bold">Tags</h4>
-        <!-- general tags -->
-        <div class="flex">
-          <div
-            v-for="tagName in sortedTags"
-            :key="tagName"
-            class="text-slate-50 text-sm bg-sky-700 shrink m-1 px-2 rounded-md"
-          >
-            {{ tagName }}
-            <button v-if="user" @click="handleDeleteTag(tagName)">
-              <img
-                src="/src/assets/icons/trash3-fill.svg"
-                alt="delete"
-                width="12"
-                height="12"
-                class="ml-1"
-              />
-            </button>
-          </div>
-          <AddTag v-if="user" :trick="trick" tagType="general" />
-        </div>
-
-        <!-- motion tags -->
-        <div class="flex border-t-2 border-slate-50 mt-2 pt-2">
-          <div
-            v-for="motionTagName in sortedMotionTags"
-            :key="motionTagName"
-            class="text-slate-50 text-sm bg-sky-700 shrink m-1 px-2 rounded-md"
-          >
-            {{ motionTagName }}
-            <button v-if="user" class="text-xs" @click="handleDeleteMotionTag(motionTagName)">
-              <img
-                src="/src/assets/icons/trash3-fill.svg"
-                alt="delete"
-                width="12"
-                height="12"
-                class="ml-1"
-              />
-            </button>
-          </div>
-          <AddTag v-if="user" :trick="trick" tagType="motionTag" />
-        </div>
-      </div>
+      <TrickTags :trick="trick" />
     </div>
 
     <!-- trick description -->
