@@ -4,6 +4,7 @@ import LoginView from '@/views/LoginView.vue'
 import CreateTrick from '@/views/admin/CreateTrick.vue'
 import TrickDetails from '@/views/TrickDetails.vue'
 import EditTrick from '@/views/admin/EditTrick.vue'
+import TricksView from '@/views/TricksView.vue'
 import TrickIndex from '@/views/TrickIndex.vue'
 import InventorsIndex from '@/views/InventorsIndex.vue'
 import InventorDetails from '@/views/InventorDetails.vue'
@@ -55,6 +56,11 @@ const router = createRouter({
       path: '/tricks',
       name: 'TrickIndex',
       component: TrickIndex
+    },
+    {
+      path: '/tricks/main',
+      name: 'TricksView',
+      component: TricksView
     },
     {
       path: '/inventors',
