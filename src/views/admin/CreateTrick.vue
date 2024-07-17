@@ -63,6 +63,7 @@ const handleSubmit = async () => {
       placeholder="Trick Name"
       v-model="title"
       class="rounded-md shadow-sm p-1 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
+      required
     />
 
     <!-- alternate names for trick -->
