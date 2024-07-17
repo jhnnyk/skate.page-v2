@@ -9,7 +9,10 @@ const { user } = getUser()
   <header class="flex justify-between items-center text-slate-50 bg-sky-700 p-4">
     <RouterLink to="/" class="text-3xl">Skate.page</RouterLink>
     <nav>
-      <RouterLink :to="{ name: 'TrickIndex' }" class="text-slate-50 hover:underline">
+      <RouterLink :to="{ name: 'TricksView' }" class="text-slate-50 hover:underline">
+        All Tricks
+      </RouterLink>
+      <RouterLink :to="{ name: 'TrickIndex' }" class="text-slate-50 hover:underline ml-4">
         Trick Index
       </RouterLink>
       <RouterLink :to="{ name: 'InventorsIndex' }" class="text-slate-50 hover:underline ml-4">

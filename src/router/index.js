@@ -53,12 +53,12 @@ const router = createRouter({
       props: true
     },
     {
-      path: '/tricks',
+      path: '/tricks-index',
       name: 'TrickIndex',
       component: TrickIndex
     },
     {
-      path: '/tricks/main',
+      path: '/tricks',
       name: 'TricksView',
       component: TricksView
     },
