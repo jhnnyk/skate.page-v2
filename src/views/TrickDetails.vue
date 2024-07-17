@@ -60,7 +60,7 @@ const { error, document: trick } = getDocument('tricks', props.id)
     <!-- sources -->
     <div v-if="trick.sources" class="bg-slate-200 my-4 rounded-md p-2">
       <h4 class="font-bold">Sources</h4>
-      {{ trick.sources }}
+      <span v-html="trick.sources"></span>
     </div>
   </div>
 </template>
