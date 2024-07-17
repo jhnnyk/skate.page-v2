@@ -2,7 +2,7 @@
 import AddName from '@/components/trick-names/AddName.vue'
 import getUser from '@/composables/getUser'
 import useDocument from '@/composables/useDocument'
-import { computed, watch } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps({ trick: Object })
 const { user } = getUser()
