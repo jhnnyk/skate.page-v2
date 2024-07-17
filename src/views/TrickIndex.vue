@@ -7,6 +7,10 @@ const { documents: tricks } = getCollection('tricks')
 const allNames = ref([])
 
 watch(tricks, async () => {
+  // reset the array of trick names
+  allNames.value = []
+
+  // get all trick names
   tricks.value.forEach((trick) => {
     trick.names.forEach((n) => {
       if (n.showInToC) {
@@ -14,6 +18,8 @@ watch(tricks, async () => {
       }
     })
   })
+
+  // sort trick names
   allNames.value.sort((a, b) => {
     const nameA = a.name.toUpperCase() // ignore upper and lowercase
     const nameB = b.name.toUpperCase() // ignore upper and lowercase
@@ -32,6 +38,8 @@ watch(tricks, async () => {
 
 <template>
   <h1 class="text-5xl text-center m-4">Trick Index</h1>
+  <p class="text-center m-2">Tricks listed by all their possible names in alphabetical order.</p>
+
   <div v-if="tricks">
     <ul v-for="trickName in allNames" :key="trickName">
       <li>
